@@ -24,24 +24,12 @@ class TableController extends Controller
 
     public function startTable(Table $table)
     {
-
-//        $arr = [];
-//
-//        $roles = Role::all();
-//        foreach ($roles as $role){
-//            for ($i=0; $i < $role->roleCount[0]->count;$i++){
-//            array_push($arr,$role->id);
-//            }
-//        }
-//        $rand = array_rand($arr);
         foreach ($table->players as $player){
             $randomValue = $this->getRandomValue();
             $player->update([
                 'role_id' => $randomValue,
             ]);
         }
-
-
         $table->update([
             'status' => 1,
         ]);
@@ -58,6 +46,7 @@ class TableController extends Controller
                 array_push($arr,$role->id);
             }
         }
+
         $rand = array_rand($arr);
         $randomValue = $arr[$rand];
         unset($arr[$rand]);

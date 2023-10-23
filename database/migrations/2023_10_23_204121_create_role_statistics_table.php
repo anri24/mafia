@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('table_id');
             $table->integer('role_id');
-            $table->integer('count');
+            $table->integer('count')->default(0);
             $table->timestamps();
         });
     }

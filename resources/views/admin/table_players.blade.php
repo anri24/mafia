@@ -25,7 +25,8 @@
             <tr>
                 <th scope="row">{{ $player->id }}</th>
                 <td>{{ $player->name }}</td>
-                <td>{{ $player->role->name }}</td>
+
+                <td>@if(isset($player->role)){{ $player->role->name }} @endif</td>
             </tr>
             </tbody>
         @endforeach
