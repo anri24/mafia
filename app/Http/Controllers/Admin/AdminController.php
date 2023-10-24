@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $tables = Table::query()->orderBy('id','DESC')->get();
+        $tables = Table::all();
         return view('admin.index',compact('tables'));
     }
 
@@ -19,6 +19,4 @@ class AdminController extends Controller
         $players = $table->players()->get();
         return view('admin.table_players',compact(['players','table']));
     }
-
-
 }

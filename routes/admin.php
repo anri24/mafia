@@ -20,7 +20,7 @@ Route::controller(TableController::class)->group(function (){
 Route::controller(RoleController::class)->group(function (){
     Route::get('roles','index')->name('roles');
     Route::get('add/role','add')->name('add.role');
-    Route::get('role/statistic/{table}','roleStatistic')->name('role.statistic');
-    Route::post('role/statistic/store/{table}','roleStatisticStore')->name('role.statistic.Store');
+    Route::get('role/statistic/{table}','showRoleStatistic')->name('role.statistic');
+    Route::post('role/statistic/store/{table}','storeRoleStatistic')->name('role.statistic.Store');
     Route::post('store/role','store')->name('store.role');
 });

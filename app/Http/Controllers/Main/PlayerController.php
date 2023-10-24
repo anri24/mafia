@@ -11,7 +11,7 @@ class PlayerController extends Controller
 {
     public function index()
     {
-        $tables = Table::query()->orderBy('id','DESC')->get();
+        $tables = Table::all();
         return view('main.index',compact('tables'));
     }
 
