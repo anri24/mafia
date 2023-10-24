@@ -22,18 +22,11 @@ Route::controller(PlayerController::class)->group(function (){
     Route::post('store/player/{table}','store')->name('store.player');
 });
 
-
-
 Route::controller(MafiaController::class)->group(function (){
     Route::get('show/role/{player}','showRole')->name('show.role');
 });
 
-
 Auth::routes();
-
-Route::get('/home', [\App\Http\Controllers\Main\HomeController::class, 'index'])->name('home');
-
-
 
 Route::middleware(['web','auth'])
     ->prefix('admin')
