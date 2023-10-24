@@ -17,4 +17,10 @@ class RoleStatistic extends Model
         'role_id',
         'count',
     ];
+
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class,'role_id','id');
+    }
 }

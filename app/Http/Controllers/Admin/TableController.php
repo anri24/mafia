@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class TableController extends Controller
 {
+    public $randKey;
+    public $randValue;
+
+    public array $roleArray;
     public function add()
     {
         return view('admin.add_table');
@@ -24,11 +28,21 @@ class TableController extends Controller
 
     public function startTable(Table $table)
     {
+
+        $arr = [];
+
+        foreach ($table->roleStatistic as $role){
+            for ($i=0; $i < $role->count;$i++){
+                array_push($arr,$role->role->id);
+            }
+        }
+        $this->roleArray = $arr;
+
         foreach ($table->players as $player){
-            $randomValue = $this->getRandomValue();
             $player->update([
-                'role_id' => $randomValue,
+                'role_id' => $this->getRandomValue($table),
             ]);
+            unset($this->roleArray[$this->randKey]);
         }
         $table->update([
             'status' => 1,
@@ -36,20 +50,12 @@ class TableController extends Controller
         return redirect()->back();
     }
 
-    public function getRandomValue()
+    public function getRandomValue(Table $table)
     {
-        $arr = [];
+        $rand = array_rand($this->roleArray);
+        $this->randKey=$rand;
+        $this->randValue=$this->roleArray[$this->randKey];
 
-        $roles = Role::all();
-        foreach ($roles as $role){
-            for ($i=0; $i < $role->roleCount[0]->count;$i++){
-                array_push($arr,$role->id);
-            }
-        }
-
-        $rand = array_rand($arr);
-        $randomValue = $arr[$rand];
-        unset($arr[$rand]);
-        return $randomValue;
+        return $this->randValue;
     }
 }
