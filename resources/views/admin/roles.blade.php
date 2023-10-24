@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    <div style="margin-left: 5%">
     <a style="margin-left: auto" href="{{ route('add.role') }}"><button type="button" class="btn btn-success">როლის დამატება</button></a>
+    </div>
 
 
 

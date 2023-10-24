@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <div style="margin-left: 5%">
     <a style="margin-left: auto" href="{{ route('add.table') }}"><button type="button" class="btn btn-success">მაგიდის დამატება</button></a>
     <a style="margin-left: auto" href="{{ route('roles') }}"><button type="button" class="btn btn-success">როლები</button></a>
+    </div>
 
     <table class="table" style="width: 90%" align="center">
         <thead>
