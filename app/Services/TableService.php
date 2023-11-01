@@ -20,7 +20,11 @@ class TableService
                 array_push($arr,$role->role->id);
             }
         }
+        if (!isset($arr[0])){
+            return redirect()->route('admin.table.players',$table->id)->with('status','you need to choose Role Statistic');
+        }
         $this->roleArray = $arr;
+
 
         foreach ($table->players as $player){
             $player->update([

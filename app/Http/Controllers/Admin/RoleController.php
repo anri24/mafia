@@ -31,7 +31,8 @@ class RoleController extends Controller
     public function showRoleStatistic(Table $table)
     {
         $roles = Role::all();
-        return view('admin.role_statistic',compact(['table','roles']));
+        $rolesStatistic = $table->roleStatistic;
+        return view('admin.role_statistic',compact(['table','roles','rolesStatistic']));
     }
 
     public function storeRoleStatistic(Request $request,Table $table,RoleService $service)

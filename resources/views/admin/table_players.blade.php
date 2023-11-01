@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+    @if(session('status'))
+        <center>
+        <div style="color: red">
+            <h3>{{ session('status') }}</h3>
+        </div>
+        </center>
+    @endif
+
     <div style="margin-left: 5%" >
         <div class="container px-4 text-center">
             <div class="row gx-5">
