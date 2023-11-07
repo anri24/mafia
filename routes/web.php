@@ -23,7 +23,7 @@ Route::controller(PlayerController::class)->group(function (){
 });
 
 Route::controller(MafiaController::class)->group(function (){
-    Route::get('show/role/{player}','showRole')->name('show.role');
+    Route::get('show/role/{player}','start')->name('show.role');
 });
 
 Auth::routes();

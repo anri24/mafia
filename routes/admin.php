@@ -14,7 +14,8 @@ Route::controller(AdminController::class)->group(function (){
 Route::controller(TableController::class)->group(function (){
     Route::get('add/table','add')->name('add.table');
     Route::post('store/table','store')->name('store.table');
-    Route::post('start/table/{table}','startTable')->name('start.table');
+    Route::post('player/roles/{table}','index')->name('player.roles');
+    Route::post('start/table/{table}','start')->name('start.table');
 });
 
 Route::controller(RoleController::class)->group(function (){

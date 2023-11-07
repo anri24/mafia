@@ -7,8 +7,10 @@ use App\Models\Player;
 
 class MafiaController extends Controller
 {
-    public function showRole(Player $player)
+    public function start(Player $player)
     {
         return view('main.start',compact('player'));
     }
+
+
 }

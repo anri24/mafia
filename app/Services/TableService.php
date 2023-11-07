@@ -11,7 +11,7 @@ class TableService
     public $randValue;
 
     public array $roleArray;
-    public function startGame(Table $table)
+    public function playerRoles(Table $table)
     {
         $arr = [];
 
@@ -32,11 +32,12 @@ class TableService
             ]);
             unset($this->roleArray[$this->randKey]);
         }
-        $table->update([
-            'status' => 1,
-        ]);
+//        $table->update([
+//            'status' => 1,
+//        ]);
         return redirect()->back();
     }
+
 
     public function getRandomValue(Table $table)
     {

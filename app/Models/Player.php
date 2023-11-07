@@ -11,8 +11,12 @@ class Player extends Model
 
     protected $table = 'players';
 
-    protected $fillable = ['table_id','role_id','name'];
+    protected $fillable = ['table_id','role_id','name','status'];
 
+    public function table()
+    {
+        return $this->belongsTo(Table::class,'table_id','id');
+    }
 
     public function role()
     {

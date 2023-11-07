@@ -21,8 +21,14 @@ class TableController extends Controller
         return redirect()->route('admin.main');
     }
 
-    public function startTable(Table $table,TableService $service)
+    public function index(Table $table,TableService $service)
     {
-        return $service->startGame($table);
+        return $service->playerRoles($table);
+    }
+
+    public function start(Table $table)
+    {
+        $table->update(['status' => 1]);
+        return redirect()->back();
     }
 }
