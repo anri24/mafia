@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('role_statistics', function (Blueprint $table) {
             $table->id();
-            $table->integer('table_id');
+            $table->bigInteger('table_id');
             $table->integer('role_id');
             $table->integer('count')->default(0);
             $table->timestamps();
