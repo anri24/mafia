@@ -24,4 +24,5 @@ Route::controller(RoleController::class)->group(function (){
     Route::get('role/statistic/{table}','showRoleStatistic')->name('role.statistic');
     Route::post('role/statistic/store/{table}','storeRoleStatistic')->name('role.statistic.Store');
     Route::post('store/role','store')->name('store.role');
+    Route::post('kill/player/{player}','killPlayer')->name('kill.player');
 });

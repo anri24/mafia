@@ -21,10 +21,10 @@
                     </div>
                     <div class="col">
                         <div class="p-3">
-                            <form>
-                                <button type="button" class="btn btn-danger">გაგდება</button>
+                            <form method="post" action="{{ route('store.vote',[$player->id,$tablePlayer->id]) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">ხმის მიცემა</button>
                             </form>
-
                         </div>
                     </div>
                 </div>

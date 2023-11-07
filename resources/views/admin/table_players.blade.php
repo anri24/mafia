@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .bg-red {
+        background: #ff0000;
+    }
+</style>
+
+
 
     @if(session('status'))
         <center>
@@ -52,13 +59,22 @@
         </tr>
         </thead>
         @foreach($players as $player)
-
             <tbody>
             <tr>
-                <th scope="row">{{ $player->id }}</th>
+                <th  scope="row">{{ $player->id }}</th>
                 <td>{{ $player->name }}</td>
 
                 <td>@if(isset($player->role)){{ $player->role->name }} @endif</td>
+                <td>
+                    @if($player->status == 1)
+                    <form method="post" action="{{ route('kill.player',$player->id) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-danger">მოკლული</button>
+                    </form>
+                    @else
+                        მკვდარი
+                    @endif
+                </td>
             </tr>
             </tbody>
         @endforeach

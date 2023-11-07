@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Player;
 use App\Models\Role;
 use App\Models\RoleStatistic;
 use App\Models\Table;
@@ -38,5 +39,11 @@ class RoleController extends Controller
     public function storeRoleStatistic(Request $request,Table $table,RoleService $service)
     {
         return $service->storeRoleStatistic($request,$table);
+    }
+
+    public function killPlayer(Player $player)
+    {
+        $player->update(['status' => 0]);
+        return redirect()->back();
     }
 }
