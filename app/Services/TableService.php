@@ -21,7 +21,7 @@ class TableService
             }
         }
         if (!isset($arr[0])){
-            return redirect()->route('admin.table.players',$table->id)->with('status','you need to choose Role Statistic');
+            return redirect()->route('admin.table.players',$table->id)->with('status','დასაყენებელია როლის სტატისტიკა');
         }
         $this->roleArray = $arr;
 

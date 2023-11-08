@@ -52,7 +52,7 @@
     <table class="table" style="width: 90%" align="center">
         <thead>
         <tr>
-            <th scope="col">id</th>
+            <th scope="col">{{ $players->count() }} მოთამაშე</th>
             <th scope="col">სახელი</th>
             <th scope="col">როლი</th>
             <th scope="col"></th>
