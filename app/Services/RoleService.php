@@ -11,17 +11,18 @@ class RoleService
 {
     public function storeRoleStatistic(Request $request,Table $table)
     {
+//        dd($request);
         $roles = Role::all();
+
+
         foreach ($roles as $role){
-            $roleId = Role::query()->where('name',str_replace('_role','',$request->{$role->name.'_role'}))->first();
-//            dd();
-//            dd($roles->find(3));
+
+            $role->name = str_replace(' ','_',$role->name);
 
             if ($request->{$role->name.'_count'} == null){
                 $request->{$role->name.'_count'} = 0;
             }
 
-//                if ($request->{$role->name.'_count'} != null && !$table->roleStatistic()->where('role_id',$role->id)->exists()){
             if (isset($table->roleStatistic) && $table->roleStatistic()->where('role_id',$role->id)->exists()){
                 $table->roleStatistic()->where('role_id',$role->id)->first()->update([
                     'count' => $request->{$role->name.'_count'}
@@ -29,11 +30,11 @@ class RoleService
             } else {
                     RoleStatistic::query()->create([
                         'table_id' => $table->id,
-                        'role_id' =>$roleId->id,
+                        'role_id' => $role->id,
                         'count' => $request->{$role->name.'_count'}
                     ]);
             }
-//                }
+
         }
         return redirect()->route('admin.table.players',$table->id);
     }

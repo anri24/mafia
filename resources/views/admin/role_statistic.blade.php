@@ -6,7 +6,7 @@
             @csrf
             @foreach($roles as $role)
             <div style="width: 20%" class="input-group flex-nowrap">
-                <input type="hidden" name="{{$role->name.'_role'}}" value="{{ $role->name }}">
+{{--                <input type="hidden" name="{{$role->name.'_role'}}" value="{{ $role->name }}">--}}
                 <label>{{ $role->name }}:</label>
                 <div style="margin-left: 2%">
 {{--                    @if(!$rolesStatistic->isEmpty())--}}
