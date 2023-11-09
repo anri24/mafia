@@ -1,6 +1,6 @@
 # run server with host
 ## login with admin
-## add table
-## add role statistic and wait users to register
-## then you need to give them roles 
-## when all player will be ready press start game
+### add table
+### wait users to register and add role's statistic
+### then you need to give them roles 
+### when all player will be ready press start game
