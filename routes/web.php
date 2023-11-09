@@ -27,7 +27,7 @@ Route::controller(MafiaController::class)->group(function (){
     Route::post('store/vote/{fromPlayer}/{toPlayer}','storeVote')->name('store.vote');
 });
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::middleware(['web','auth'])
     ->prefix('admin')
