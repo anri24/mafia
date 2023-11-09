@@ -24,4 +24,9 @@ class Table extends Model
     {
         return $this->hasMany(RoleStatistic::class,'table_id','id');
     }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class,'table_id','id');
+    }
 }

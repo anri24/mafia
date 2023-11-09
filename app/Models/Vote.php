@@ -12,7 +12,9 @@ class Vote extends Model
     protected $table = 'votes';
 
     protected $fillable = [
+        'table_id',
         'from',
         'to',
+        'round',
     ];
 }

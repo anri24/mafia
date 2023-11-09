@@ -27,12 +27,10 @@
                     @if($player->status == 1)
                     <div class="col">
                         <div class="p-3">
-
-                            <form method="post" action="{{ route('store.vote',[$player->id,$tablePlayer->id]) }}">
+                            <form method="post" action="{{ route('store.vote',[$player->table->id,$player->id,$tablePlayer->id]) }}">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">ხმის მიცემა</button>
                             </form>
-
                         </div>
                     </div>
                     @endif
