@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('table_id');
             $table->bigInteger('from');
             $table->bigInteger('to');
+            $table->float('round')->default(1);
             $table->timestamps();
         });
     }

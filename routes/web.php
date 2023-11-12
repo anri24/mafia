@@ -26,10 +26,10 @@ Route::controller(PlayerController::class)->group(function (){
 
 Route::controller(MafiaController::class)->group(function (){
     Route::get('show/role/{player}','start')->name('show.role');
-    Route::post('store/vote/{fromPlayer}/{toPlayer}','storeVote')->name('store.vote');
+    Route::post('store/vote/{table}/{fromPlayer}/{toPlayer}','storeVote')->name('store.vote');
 });
 
-Auth::routes();
+Auth::routes(['register' => false,'reset' => false]);
 
 Route::middleware(['web','auth'])
     ->prefix('admin')
