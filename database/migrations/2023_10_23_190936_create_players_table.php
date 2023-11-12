@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('table_id');
             $table->integer('role_id')->nullable();
-            $table->string('name');
+            $table->integer('phone');
+            $table->string('name')->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });

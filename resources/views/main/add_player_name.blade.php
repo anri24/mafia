@@ -2,8 +2,9 @@
 
 
 @section('content')
+
     <center>
-<form method="post" action="{{ route('store.player',$table->id) }}">
+<form method="post" action="{{ route('store.player.name',$player->id) }}">
     @csrf
     <label>სახელი</label><br>
     <div style="width: 200px" class="input-group flex-nowrap">

@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(PlayerController::class)->group(function (){
     Route::get('/','index')->name('index');
-    Route::get('add/player/{table}','addPlayer')->name('add.player');
-    Route::post('store/player/{table}','store')->name('store.player');
+    Route::get('add/player/name/{table}','addPlayerPhone')->name('add.player.phone');
+    Route::get('add/player/phone/{player}','addPlayerName')->name('add.player.name');
+    Route::post('store/player/phone/{table}','storePhone')->name('store.player.phone');
+    Route::post('store/player/name/{player}','StoreName')->name('store.player.name');
 });
 
 Route::controller(MafiaController::class)->group(function (){

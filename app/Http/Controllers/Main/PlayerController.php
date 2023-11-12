@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PlayerNameRequest;
 use App\Models\Player;
 use App\Models\Table;
 use Illuminate\Http\Request;
@@ -15,17 +16,38 @@ class PlayerController extends Controller
         return view('main.index',compact('tables'));
     }
 
-    public function addPlayer(Table $table)
+    public function addPlayerPhone(Table $table)
     {
-        return view('main.add_player',compact(['table']));
+        return view('main.add_player_phone',compact(['table']));
     }
 
-    public function store(Request $request,Table $table)
+    public function addPlayerName(Player $player)
     {
-        $player = Player::query()->create([
-            'table_id' => $table->id,
+        return view('main.add_player_name',compact('player'));
+    }
+
+    public function storePhone(Request $request,Table $table)
+    {
+        $member = $table->players()->where('phone',$request->phone);
+
+        if ($member->exists()){
+            $player = $member->first();
+            return redirect()->route('show.role',$player->id);
+        }else{
+            $player = Player::query()->create([
+                'table_id' => $table->id,
+                'phone' => $request->phone,
+            ]);
+
+            return redirect()->route('add.player.name',$player->id);
+        }
+    }
+
+    public function StoreName(PlayerNameRequest $request,Player $player)
+    {
+        $player->update([
             'name' => $request->name,
         ]);
-        return redirect()->route('show.role',$player->id);
+        return redirect()->route('show.role',$player->first()->id);
     }
 }

@@ -7,7 +7,7 @@
 @foreach($tables as $table)
                     <div class="col">
                         <div class="p-3">
-                            <a href="{{ route('add.player',$table->id) }}"><button type="button" class="btn btn-primary btn-lg">{{ $table->name }}</button></a>
+                            <a href="{{ route('add.player.phone',$table->id) }}"><button type="button" class="btn btn-primary btn-lg">{{ $table->name }}</button></a>
                         </div>
                     </div>
 @endforeach
