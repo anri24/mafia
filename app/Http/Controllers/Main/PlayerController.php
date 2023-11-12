@@ -32,7 +32,11 @@ class PlayerController extends Controller
 
         if ($member->exists()){
             $player = $member->first();
-            return redirect()->route('show.role',$player->id);
+            if ($player->name == null){
+                return redirect()->route('add.player.name',$player->id);
+            }else{
+                return redirect()->route('show.role',$player->id);
+            }
         }else{
             $player = Player::query()->create([
                 'table_id' => $table->id,
