@@ -17,6 +17,7 @@ class AdminController extends Controller
     public function tablePlayers(Table $table)
     {
         $players = $table->players()->get();
-        return view('admin.table_players',compact(['players','table']));
+        $candidates = $table->candidates;
+        return view('admin.table_players',compact(['players','table','candidates']));
     }
 }

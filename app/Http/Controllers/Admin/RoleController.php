@@ -44,6 +44,11 @@ class RoleController extends Controller
     public function killPlayer(Player $player)
     {
         $player->update(['status' => 0]);
-        return redirect()->back();
+
+        $candidates = $player->table()->first()->candidates;
+        foreach ($candidates as $candidate){
+            $candidate->delete();
+        }
+        return redirect()->route('admin.table.players',$player->table()->first()->id);
     }
 }

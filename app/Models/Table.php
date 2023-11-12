@@ -19,6 +19,10 @@ class Table extends Model
     {
         return $this->hasMany(Player::class,'table_id','id');
     }
+    public function candidates()
+    {
+        return $this->hasMany(Candidate::class,'table_id','id');
+    }
 
     public function roleStatistic()
     {

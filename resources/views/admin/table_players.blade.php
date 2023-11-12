@@ -49,6 +49,11 @@
                         </form>
                     </div>
                 </div>
+                <div class="col">
+                    <div class="p-3">
+                        <a style="margin-left: auto" href="{{ route('candidates',$table->id) }}"><button type="button" class="btn btn-success">კანდიდატები</button></a>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -64,6 +69,7 @@
             <th scope="col">როლი</th>
             <th scope="col">fall</th>
             <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         @foreach($players as $player)
@@ -74,7 +80,17 @@
 
                 <td>@if(isset($player->role)){{ $player->role->name }} @endif</td>
                 <td @if($player->fall >= $player->table->fall - 1)  style="color: red" @endif>{{ $player->fall }}</td>
+                <td>
+                    @if(isset($player->candidate[0]))
+                        უკვე კანდიდატი
+                    @elseif($player->status == 1)
+                        <form method="post" action="{{ route('add.candidate',$player->id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">კანდიდატი</button>
+                        </form>
 
+                    @endif
+                </td>
                 <td>
                     @if($player->status == 1)
                     <form method="post" action="{{ route('kill.player',$player->id) }}">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidate;
 use App\Models\Player;
 use App\Models\Role;
 use App\Models\Table;
@@ -50,6 +51,20 @@ class TableController extends Controller
             $player->update(['status'=>0]);
         }
         return redirect()->back();
+    }
+
+    public function addCandidate(Player $player)
+    {
+        Candidate::create(['table_id'=>$player->table()->first()->id,'user_id'=>$player->id]);
+        return redirect()->back();
+    }
+
+
+
+    public function candidates(Table $table)
+    {
+        $candidates = $table->candidates()->with('members')->get();
+        return view('admin.candidates',compact(['candidates','table']));
     }
 
 }
