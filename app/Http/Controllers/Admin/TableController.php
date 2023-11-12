@@ -31,4 +31,15 @@ class TableController extends Controller
         $table->update(['status' => 1]);
         return redirect()->back();
     }
+
+    public function startAgain(Table $table)
+    {
+        $table->update(['status' => 0]);
+        $players = $table->players;
+        foreach ($players as $player){
+            $player->update(['role_id'=>null,'status'=>1]);
+        }
+        return redirect()->back();
+    }
+
 }

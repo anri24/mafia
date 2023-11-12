@@ -41,7 +41,14 @@
                         </form>
                     </div>
                 </div>
-
+                <div class="col">
+                    <div class="p-3">
+                        <form method="post" action="{{ route('start.again.table',$table->id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-success">თავიდან დაწყება</button>
+                        </form>
+                    </div>
+                </div>
 
             </div>
         </div>

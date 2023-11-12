@@ -29,7 +29,7 @@ class PlayerController extends Controller
     public function storePhone(Request $request,Table $table)
     {
         $member = $table->players()->where('phone',$request->phone);
-
+//        dd($member);
         if ($member->exists()){
             $player = $member->first();
             if ($player->name == null){
@@ -52,6 +52,6 @@ class PlayerController extends Controller
         $player->update([
             'name' => $request->name,
         ]);
-        return redirect()->route('show.role',$player->first()->id);
+        return redirect()->route('show.role',$player->id);
     }
 }
