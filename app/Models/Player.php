@@ -12,7 +12,7 @@ class Player extends Model
 
     protected $table = 'players';
 
-    protected $fillable = ['table_id','role_id','phone','name','status'];
+    protected $fillable = ['table_id','role_id','phone','name','status','fall'];
 
     public function table()
     {

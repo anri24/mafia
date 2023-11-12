@@ -17,6 +17,7 @@ Route::controller(TableController::class)->group(function (){
     Route::post('player/roles/{table}','index')->name('player.roles');
     Route::post('start/table/{table}','start')->name('start.table');
     Route::post('start/again/table/{table}','startAgain')->name('start.again.table');
+    Route::post('add/player/fall/{player}','playerFall')->name('add.player.fall');
 });
 
 Route::controller(RoleController::class)->group(function (){

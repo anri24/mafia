@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('phone');
             $table->string('name')->nullable();
             $table->integer('status')->default(1);
+            $table->integer('fall')->default(0);
             $table->timestamps();
         });
     }

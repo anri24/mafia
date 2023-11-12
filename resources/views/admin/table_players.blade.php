@@ -62,6 +62,7 @@
             <th scope="col">{{ $players->count() }} მოთამაშე</th>
             <th scope="col">სახელი</th>
             <th scope="col">როლი</th>
+            <th scope="col">fall</th>
             <th scope="col"></th>
         </tr>
         </thead>
@@ -72,6 +73,8 @@
                 <td>{{ $player->name }}</td>
 
                 <td>@if(isset($player->role)){{ $player->role->name }} @endif</td>
+                <td @if($player->fall >= $player->table->fall - 1)  style="color: red" @endif>{{ $player->fall }}</td>
+
                 <td>
                     @if($player->status == 1)
                     <form method="post" action="{{ route('kill.player',$player->id) }}">
@@ -79,7 +82,15 @@
                         <button type="submit" class="btn btn-danger">მოკლული</button>
                     </form>
                     @else
-                        მკვდარი
+                        გავარდნილი
+                    @endif
+                </td>
+                <td>
+                    @if($player->status == 1)
+                        <form method="post" action="{{ route('add.player.fall',$player->id) }}">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">fall</button>
+                        </form>
                     @endif
                 </td>
             </tr>
