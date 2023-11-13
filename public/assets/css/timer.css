@@ -1,0 +1,10 @@
+.border{
+    border: 3px solid black;
+
+}
+.spaceTop{
+    margin-top: 20px;
+}
+.spaceBottom{
+    margin-bottom: 20px;
+}
