@@ -84,6 +84,14 @@
                                 გავარდნილი
                             @endif
                         </td>
+                        <td>
+                            @if($candidate->members->status == 1)
+                                <form method="post" action="{{ route('add.player.fall',$candidate->members->id) }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">fall</button>
+                                </form>
+                            @endif
+                        </td>
 
                     </tr>
                     </tbody>

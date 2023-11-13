@@ -19,6 +19,7 @@ $("#start").on("click", function() {
         if (--timer < 0) {
             timer = duration;
             clearInterval(counter);
+            var audio = new Audio('../../media/timeUp.mp3').play();
         }
 
         $("#stop").on("click", function() {
@@ -28,13 +29,19 @@ $("#start").on("click", function() {
 });
 
 /* adds to the clock */
-$("#plus").on("click", function() {
-    sec += 10;
+$("#plus10s").on("click", function() {
+    sec = 10;
+    $("#time").html(sec)
+});
+$("#plus30s").on("click", function() {
+    sec = 30;
+    $("#time").html(sec)
+});
+
+$("#plus1m").on("click", function() {
+    sec = 60;
     $("#time").html(sec)
 });
 
 /* subtracts from the clock */
-$("#minus").on("click", function() {
-    sec -= 10;
-    $("#time").html(sec)
-});
+

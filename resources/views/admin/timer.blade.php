@@ -8,8 +8,9 @@
     <div class = "spaceTop col-sm-8 col-sm-push-8">
         <div class = "row">
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button style="margin-right: 10px" type="button" class="btn btn-secondary" id="minus">- 10 sec</button>
-                <button type="button" class="btn btn-secondary" id="plus">+10 sec</button>
+                <button style="margin-right: 10px" type="button" class="btn btn-secondary" id="plus10s">10 sec</button>
+                <button style="margin-right: 10px" type="button" class="btn btn-secondary" id="plus30s">30 sec</button>
+                <button style="margin-right: 10px" type="button" class="btn btn-secondary" id="plus1m">1 min</button>
             </div>
         </div>
     </div>
@@ -22,11 +23,11 @@
         </div>
     </div>
     <!-- start/stop buttons -->
-    <div class = "spaceBottom col-sm-4 col-sm-push-3">
+    <div class = "spaceBottom col-sm-8 col-sm-push-8">
         <div class = "row">
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-secondary" id="stop">Stop</button>
-                <button type="button" class="btn btn-secondary" id="start">Start</button>
+                <button style="margin-right: 10px" type="button" class="btn btn-danger" id="stop">Stop</button>
+                <button style="margin-left: 10px" type="button" class="btn btn-success" id="start">Start</button>
             </div>
         </div>
     </div>
