@@ -59,6 +59,9 @@
         </div>
     </div>
 
+<div class="row g-0 text-center">
+    <div class="col-sm-10 col-md-10">
+
 
 
     <table class="table" style="width: 90%" align="center">
@@ -113,4 +116,8 @@
             </tbody>
         @endforeach
     </table>
+    </div>
+    <div align="center" class="col-2 col-md-2">
+        @include('admin.timer')
+    </div>
 @endsection

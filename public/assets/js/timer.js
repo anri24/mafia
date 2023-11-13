@@ -19,6 +19,7 @@ $("#start").on("click", function() {
         if (--timer < 0) {
             timer = duration;
             clearInterval(counter);
+            sec = 30;
             var audio = new Audio('../../media/timeUp.mp3').play();
         }
 
