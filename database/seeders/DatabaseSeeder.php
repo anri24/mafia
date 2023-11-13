@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Enums\UserRole;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -28,11 +29,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('wamyvani123'),
         ]);
-        Role::create(['name'=>'მოქალაქე']);
-        Role::create(['name'=>'ექიმი']);
-        Role::create(['name'=>'დეტექტივი']);
-        Role::create(['name'=>'მაფიოზი']);
-        Role::create(['name'=>'დონი']);
-        Role::create(['name'=>'სერიული მკვლელი']);
+        Role::create(['name'=>UserRole::CITIZEN->value]);
+        Role::create(['name'=>UserRole::DOCTOR->value]);
+        Role::create(['name'=>UserRole::DETECTIVE->value]);
+        Role::create(['name'=>UserRole::MAFIOSO->value]);
+        Role::create(['name'=>UserRole::DON->value]);
+        Role::create(['name'=>UserRole::KILLER->value]);
     }
 }
