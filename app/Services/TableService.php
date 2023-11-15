@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\Player;
 use App\Models\Table;
+use Illuminate\Http\RedirectResponse;
 
 class TableService
 {
@@ -46,5 +48,29 @@ class TableService
         $this->randValue=$this->roleArray[$this->randKey];
 
         return $this->randValue;
+    }
+
+
+    public function startAgain(Table $table): RedirectResponse
+    {
+        $table->update(['status' => 0]);
+        $players = $table->players;
+        foreach ($players as $player){
+            $player->update(['role_id'=>null,'status'=>1,'fall'=>0]);
+        }
+        $candidates = $table->candidates;
+        foreach ($candidates as $candidate){
+            $candidate->delete();
+        }
+        return redirect()->back();
+    }
+
+    public function playerFall(Player $player)
+    {
+        $player->update(['fall' => $player->fall + 1]);
+        if ($player->fall == $player->table()->first()->fall){
+            $player->update(['status'=>0]);
+        }
+        return redirect()->back();
     }
 }

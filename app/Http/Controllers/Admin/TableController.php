@@ -7,11 +7,19 @@ use App\Models\Candidate;
 use App\Models\Player;
 use App\Models\Role;
 use App\Models\Table;
+use App\Services\PlayerService;
 use App\Services\TableService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TableController extends Controller
 {
+    protected TableService $service;
+
+    public function __constructor(TableService $service)
+    {
+        $this->service = $service;
+    }
     public function add()
     {
         return view('admin.add_table');
@@ -34,23 +42,15 @@ class TableController extends Controller
         return redirect()->back();
     }
 
-    public function startAgain(Table $table)
+    public function startAgain(Table $table,TableService $service): RedirectResponse
     {
-        $table->update(['status' => 0]);
-        $players = $table->players;
-        foreach ($players as $player){
-            $player->update(['role_id'=>null,'status'=>1,'fall'=>0]);
-        }
-        return redirect()->back();
+//        return $this->service->startAgain($table);
+        return $service->startAgain($table);
     }
 
     public function playerFall(Player $player)
     {
-        $player->update(['fall' => $player->fall + 1]);
-        if ($player->fall == $player->table()->first()->fall){
-            $player->update(['status'=>0]);
-        }
-        return redirect()->back();
+        $this->service->playerFall($player);
     }
 
     public function addCandidate(Player $player)
