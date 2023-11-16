@@ -34,9 +34,7 @@ class TableService
             ]);
             unset($this->roleArray[$this->randKey]);
         }
-//        $table->update([
-//            'status' => 1,
-//        ]);
+
         return redirect()->back();
     }
 

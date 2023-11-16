@@ -11,8 +11,12 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
-    protected PlayerService $service;
+    protected $service;
 
+    public function __construct(PlayerService $service)
+    {
+        $this->service = $service;
+    }
     public function index()
     {
         $tables = Table::all();

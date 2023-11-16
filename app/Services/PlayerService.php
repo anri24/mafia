@@ -19,6 +19,9 @@ class PlayerService
                 return redirect()->route('show.role', $player->id);
             }
         } else {
+//            if ($table->players()->count() >= $table->players_quantity){
+//                return redirect()->route('');
+//            }
             $player = Player::query()->create([
                 'table_id' => $table->id,
                 'phone' => $request->phone,

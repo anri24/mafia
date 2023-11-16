@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TableRequest;
 use App\Models\Candidate;
 use App\Models\Player;
 use App\Models\Role;
@@ -14,9 +15,9 @@ use Illuminate\Http\Request;
 
 class TableController extends Controller
 {
-    protected TableService $service;
+    protected $service;
 
-    public function __constructor(TableService $service)
+    public function __construct(TableService $service)
     {
         $this->service = $service;
     }
@@ -25,15 +26,15 @@ class TableController extends Controller
         return view('admin.add_table');
     }
 
-    public function store(Request $request)
+    public function store(TableRequest $request)
     {
-        Table::query()->create(['name' => $request->name,'fall'=>$request->fall]);
+        Table::create($request->validated());
         return redirect()->route('admin.main');
     }
 
-    public function index(Table $table,TableService $service)
+    public function index(Table $table)
     {
-        return $service->playerRoles($table);
+        return $this->service->playerRoles($table);
     }
 
     public function start(Table $table)
@@ -42,15 +43,14 @@ class TableController extends Controller
         return redirect()->back();
     }
 
-    public function startAgain(Table $table,TableService $service): RedirectResponse
+    public function startAgain(Table $table): RedirectResponse
     {
-//        return $this->service->startAgain($table);
-        return $service->startAgain($table);
+        return $this->service->startAgain($table);
     }
 
     public function playerFall(Player $player)
     {
-        $this->service->playerFall($player);
+       return $this->service->playerFall($player);
     }
 
     public function addCandidate(Player $player)

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Player;
 use App\Models\Role;
 use App\Models\RoleStatistic;
 use App\Models\Table;
@@ -33,5 +34,16 @@ class RoleService
         }
 
         return redirect()->route('admin.table.players', $table->id);
+    }
+
+    public function killPlayer(Player $player)
+    {
+        $player->update(['status' => 0]);
+
+        $candidates = $player->table()->first()->candidates;
+        foreach ($candidates as $candidate){
+            $candidate->delete();
+        }
+        return redirect()->route('admin.table.players',$player->table()->first()->id);
     }
 }

@@ -12,6 +12,12 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    protected $service;
+
+    public function __construct(RoleService $service)
+    {
+        $this->service = $service;
+    }
 
     public function index()
     {
@@ -36,19 +42,13 @@ class RoleController extends Controller
         return view('admin.role_statistic',compact(['table','roles','rolesStatistic']));
     }
 
-    public function storeRoleStatistic(Request $request,Table $table,RoleService $service)
+    public function storeRoleStatistic(Request $request,Table $table)
     {
-        return $service->storeRoleStatistic($request,$table);
+        return $this->service->storeRoleStatistic($request,$table);
     }
 
     public function killPlayer(Player $player)
     {
-        $player->update(['status' => 0]);
-
-        $candidates = $player->table()->first()->candidates;
-        foreach ($candidates as $candidate){
-            $candidate->delete();
-        }
-        return redirect()->route('admin.table.players',$player->table()->first()->id);
+        return $this->service->killPlayer($player);
     }
 }

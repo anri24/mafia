@@ -12,7 +12,7 @@ class Table extends Model
 
     protected $table = 'tables';
 
-    protected $fillable = ['name','status','fall'];
+    protected $fillable = ['name','status','fall','players_quantity'];
 
 
     public function players()

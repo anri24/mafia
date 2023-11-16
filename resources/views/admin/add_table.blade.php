@@ -12,6 +12,10 @@
                 <label for="fall" class="form-label">fall</label>
                 <input type="number" name="fall" class="form-control" id="fall">
             </div>
+            <div class="mb-3">
+                <label for="fall" class="form-label">მოთამაშეების რაოდენობა</label>
+                <input type="number" name="users_quantity" class="form-control" id="fall">
+            </div>
             <button type="submit" class="btn btn-success">დამატება</button>
         </form>
 
