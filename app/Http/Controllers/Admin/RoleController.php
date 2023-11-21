@@ -51,4 +51,6 @@ class RoleController extends Controller
     {
         return $this->service->killPlayer($player);
     }
+
+
 }

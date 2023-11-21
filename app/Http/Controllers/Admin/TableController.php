@@ -37,6 +37,11 @@ class TableController extends Controller
         return $this->service->playerRoles($table);
     }
 
+    public function setRole(Request $request,Player $player)
+    {
+        return $this->service->setRole($request,$player);
+    }
+
     public function start(Table $table)
     {
         $table->update(['status' => 1]);

@@ -20,6 +20,7 @@ Route::controller(TableController::class)->group(function (){
     Route::post('add/player/fall/{player}','playerFall')->name('add.player.fall');
     Route::post('add/candidate/{player}','addCandidate')->name('add.candidate');
     Route::get('candidates/{table}','candidates')->name('candidates');
+    Route::post('set/role/{player}','setRole')->name('set.role');
 });
 
 Route::controller(RoleController::class)->group(function (){

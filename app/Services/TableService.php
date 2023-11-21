@@ -3,8 +3,10 @@
 namespace App\Services;
 
 use App\Models\Player;
+use App\Models\Role;
 use App\Models\Table;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class TableService
 {
@@ -13,30 +15,63 @@ class TableService
     public $randValue;
 
     public array $roleArray;
+//    public function playerRoles(Table $table)
+//    {
+//        $arr = [];
+//
+//        foreach ($table->roleStatistic as $role){
+//            for ($i=0; $i < $role->count;$i++){
+//                array_push($arr,$role->role->id);
+//            }
+//        }
+//        if (!isset($arr[0])){
+//            return redirect()->route('admin.table.players',$table->id)->with('status','დასაყენებელია როლის სტატისტიკა');
+//        }
+//        $this->roleArray = $arr;
+//
+//
+//        foreach ($table->players as $player){
+//            $player->update([
+//                'role_id' => $this->getRandomValue($table),
+//            ]);
+//            unset($this->roleArray[$this->randKey]);
+//        }
+//
+//        return redirect()->back();
+//    }
+
+
     public function playerRoles(Table $table)
     {
         $arr = [];
 
         foreach ($table->roleStatistic as $role){
             for ($i=0; $i < $role->count;$i++){
-                array_push($arr,$role->role->id);
+
+                if (!in_array($role->role->name,$arr)){
+                    array_push($arr,$role->role->name);
+                }
             }
         }
         if (!isset($arr[0])){
             return redirect()->route('admin.table.players',$table->id)->with('status','დასაყენებელია როლის სტატისტიკა');
         }
         $this->roleArray = $arr;
+        return $this->roleArray;
+    }
 
 
-        foreach ($table->players as $player){
-            $player->update([
-                'role_id' => $this->getRandomValue($table),
-            ]);
-            unset($this->roleArray[$this->randKey]);
-        }
-
+    public function setRole(Request $request,Player $player)
+    {
+        $role = Role::where('name',$request->role)->first();
+        $player->update([
+            'role_id' => $role->id,
+        ]);
         return redirect()->back();
     }
+
+
+
 
 
     public function getRandomValue(Table $table)

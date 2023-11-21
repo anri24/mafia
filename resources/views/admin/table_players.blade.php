@@ -81,7 +81,35 @@
                 <th  scope="row">{{ $player->id }}</th>
                 <td>{{ $player->name }}</td>
 
-                <td>@if(isset($player->role)){{ $player->role->name }} @endif</td>
+{{--                <td></td>--}}
+                <td>
+                    @if(isset($player->role))
+                        {{ $player->role->name }}
+                    @else
+                    <form method="post" action="{{ route('set.role',[$player->id]) }}">
+                        @csrf
+                    <div class="row">
+                        <div class="col">
+                            <div class="">
+                                <select class="form-select" name="role" aria-label="Default select example">
+                                    <option selected>როლები</option>
+                                    @foreach($roles as $role)
+                                        <option value="{{ $role }}">{{ $role }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="">
+                                <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg></button>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
+                    @endif
+                </td>
                 <td @if($player->fall >= $player->table->fall - 1)  style="color: red" @endif>{{ $player->fall }}</td>
                 <td>
                     @if(isset($player->candidate[0]))
