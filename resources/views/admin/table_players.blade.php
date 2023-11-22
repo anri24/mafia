@@ -25,14 +25,14 @@
                         <a style="margin-left: auto" href="{{ route('role.statistic',$table->id) }}"><button type="button" class="btn btn-success">როლის სტატისტიკა</button></a>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="p-3">
-                        <form method="post" action="{{ route('player.roles',$table->id) }}">
-                            @csrf
-                            <button type="submit" class="btn btn-success">როლების მიცემა</button>
-                        </form>
-                    </div>
-                </div>
+{{--                <div class="col">--}}
+{{--                    <div class="p-3">--}}
+{{--                        <form method="post" action="{{ route('player.roles',$table->id) }}">--}}
+{{--                            @csrf--}}
+{{--                            <button type="submit" class="btn btn-success">როლების მიცემა</button>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="col">
                     <div class="p-3">
                         <form method="post" action="{{ route('start.table',$table->id) }}">
