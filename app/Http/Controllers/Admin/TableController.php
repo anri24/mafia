@@ -32,7 +32,7 @@ class TableController extends Controller
         return redirect()->route('admin.main');
     }
 
-    public function index(Table $table)
+    public function giveRoles(Table $table)
     {
         return $this->service->playerRoles($table);
     }
