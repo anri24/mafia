@@ -1,13 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .bg-red {
-        background: #ff0000;
-    }
-</style>
-
-
 
     @if(session('status'))
         <center>
